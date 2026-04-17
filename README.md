@@ -3,10 +3,17 @@ A Human-in-the-Loop GeoAI tool for detecting unauthorized urban development in K
 
 Focus Area: Khayelitsha (Informal Settlement Expansion)
 
+---
+Dashboard Preview
+
+<p align="center">
+  <img src="https://github.com/frankraDIUM/Chicago-Urban-Mobility-Pattern-Analysis-Using-Satellite-Imagery-Taxi-Data-and-ML/blob/main/mobility_analysis_.gif" />
+</p>
+
+---
 
 
-
-1. Project Objective
+*1. Project Objective*
 Develop a human-in-the-loop GeoAI system to detect and prioritize potential unauthorized building developments and land-use violations using:
 
   - Sentinel-2 satellite imagery (10m resolution)
@@ -15,13 +22,13 @@ Develop a human-in-the-loop GeoAI system to detect and prioritize potential unau
   - ML feedback loop with active learning elements
   - Interactive review interface for urban planners
 
-2. Study Area
+*2. Study Area*
 
   - AOI: Khayelitsha (bounding box: 18.65°E to 18.70°E, 34.065°S to 34.015°S)
   - CRS: EPSG:32734 (UTM Zone 34S) for accurate area/distance calculations
   - Time periods: t1 = Jan 2022, t2 = Jan 2025
 
-3. Technology Stack
+*3. Technology Stack*
 
   - Python, Anaconda environment
   - Geospatial: GeoPandas, Rasterio, Shapely, Folium, Streamlit-Folium
@@ -30,7 +37,7 @@ Develop a human-in-the-loop GeoAI system to detect and prioritize potential unau
   - Database: SQLite (review_log table)
   - Frontend: Streamlit dashboard with interactive Folium map
 
-4. Methodology & Key Components
+*4. Methodology & Key Components*
 Phase 1 – Data Acquisition & Preprocessing
 
   - Clipped official building footprints and zoning layers to AOI
@@ -67,7 +74,7 @@ Phase 5 – ML Integration & Evaluation
   - Evaluation dashboard (accuracy, precision, recall, confusion matrix, reviewer performance)
   - Inspection Priority queue with weighted scoring and class labels
 
-5. Key Features
+*5. Key Features*
 
   - Change detection using NDVI built-up proxy
   - Automated compliance rules integrated with official GIS data
@@ -78,7 +85,7 @@ Phase 5 – ML Integration & Evaluation
   - Priority-based inspection queue for field teams
   - Full audit trail via SQLite
 
-6. Current Limitations
+*6. Current Limitations*
 
   - Sentinel-2 10m resolution limits detection of very small structures
   - Active learning is simulated (manual retraining trigger)
@@ -86,7 +93,7 @@ Phase 5 – ML Integration & Evaluation
   - No automatic background retraining yet
   - Evaluation is based on the same reviewer pool
 
-7. Future Work
+*7. Future Work*
 
   - Integrate higher-resolution imagery (Planet Labs or aerial)
   - Implement true asynchronous active learning with auto-retraining
