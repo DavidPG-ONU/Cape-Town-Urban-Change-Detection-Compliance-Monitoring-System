@@ -1,0 +1,3 @@
+structure_id,model_risk_score,model_status,human_decision,case_status,confidence,comment,time_spent_sec,timestamp
+S0007,0.55,High Risk - Restricted / Protected Zone,Illegal,New,70,,13,2026-04-17 08:45:31
+S0000,0.69,High Risk - Infrastructure Conflict,Illegal,New,70,,5,2026-04-17 08:46:03
