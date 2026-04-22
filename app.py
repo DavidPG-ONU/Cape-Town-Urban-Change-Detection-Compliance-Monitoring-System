@@ -85,17 +85,43 @@ def compute_uncertainty(score):
 
 # ====================== LOAD DATA ======================
 @st.cache_data
+@st.cache_data
 def load_data():
-    df = gpd.read_file("compliance_results_ultimate_final.geojson")
-    df["structure_id"] = "S" + df.index.astype(str).str.zfill(4)
-    return df
+    try:
+        st.write("Loading GeoJSON...")
+        df = gpd.read_file("compliance_results_ultimate_final.geojson")
+        df["structure_id"] = "S" + df.index.astype(str).str.zfill(4)
+        st.write("Loaded:", len(df), "records")
+        return df
+    except Exception as e:
+        st.error(f"ERROR loading data: {e}")
+        return gpd.GeoDataFrame()
 
 df = load_data()
 
 # ====================== SESSION STATE ======================
-for key in ["selected_id", "auto_mode", "active_learning", "show_satellite", "prediction_success", "start_time", "trigger_retrain"]:
-    if key not in st.session_state:
-        st.session_state[key] = "" if key == "selected_id" else False
+if "selected_id" not in st.session_state:
+    st.session_state["selected_id"] = ""
+
+if "auto_mode" not in st.session_state:
+    st.session_state["auto_mode"] = False
+
+if "active_learning" not in st.session_state:
+    st.session_state["active_learning"] = False
+
+if "show_satellite" not in st.session_state:
+    st.session_state["show_satellite"] = False
+
+if "prediction_success" not in st.session_state:
+    st.session_state["prediction_success"] = False
+
+if "trigger_retrain" not in st.session_state:
+    st.session_state["trigger_retrain"] = False
+
+# IMPORTANT FIX
+if "start_time" not in st.session_state:
+    st.session_state["start_time"] = datetime.now()
+
 
 # ====================== TABS ======================
 tab1, tab2, tab3, tab4 = st.tabs(["Review System", "ML Lab", "Evaluation", "Inspection Priority"])
